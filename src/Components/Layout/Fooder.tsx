@@ -310,9 +310,9 @@ const Footer: React.FC = () => {
           <div style={copyrightStyles}>
             <FaCopyright size={16} />
             <span>{currentYear} Peter Muturi Muigai. All rights reserved.</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            {/* <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               • Made with <FaHeart size={14} color="#ef4444" /> in Kenya
-            </span>
+            </span> */}
           </div>
 
           <button 

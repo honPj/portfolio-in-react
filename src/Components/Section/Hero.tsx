@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SITE_INFO } from '../../Utils/constants';
-import { FaGithub, FaLinkedin, FaDownload, FaCode, FaTools, FaRocket } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDownload, FaCode, FaTools, FaRocket, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Hero: React.FC = () => {
   // Main container styles
   const sectionStyles: React.CSSProperties = {
     minHeight: '100vh',
-    background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+    background: 'var(--hero-bg-gradient, linear-gradient(135deg, #0f172a 0%, #1e293b 100%))',
     position: 'relative',
     overflow: 'hidden',
     padding: '100px 0 80px',
@@ -29,12 +29,12 @@ const Hero: React.FC = () => {
 
   // Content styles
   const heroContentStyles: React.CSSProperties = {
-    color: '#f8fafc',
+    color: 'var(--hero-text-color, #f8fafc)',
   };
 
   const heroBadgeStyles: React.CSSProperties = {
     display: 'inline-block',
-    background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
+    background: 'var(--hero-badge-gradient, linear-gradient(90deg, #3b82f6, #8b5cf6))',
     color: 'white',
     padding: '8px 20px',
     borderRadius: '50px',
@@ -50,22 +50,22 @@ const Hero: React.FC = () => {
     fontWeight: 800,
     lineHeight: 1.1,
     marginBottom: '20px',
-    background: 'linear-gradient(90deg, #f8fafc 60%, #cbd5e1 100%)',
+    background: 'var(--hero-title-gradient, linear-gradient(90deg, #f8fafc 60%, #cbd5e1 100%))',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
   };
 
   const accentTextStyles: React.CSSProperties = {
-    color: '#60a5fa',
+    color: 'var(--hero-accent-color, #60a5fa)',
     background: 'none',
-    WebkitTextFillColor: '#60a5fa',
+    WebkitTextFillColor: 'var(--hero-accent-color, #60a5fa)',
   };
 
   const heroSubtitleStyles: React.CSSProperties = {
     fontSize: '1.5rem',
     fontWeight: 600,
-    color: '#cbd5e1',
+    color: 'var(--hero-subtitle-color, #cbd5e1)',
     marginBottom: '30px',
     display: 'flex',
     alignItems: 'center',
@@ -75,8 +75,7 @@ const Hero: React.FC = () => {
   const heroDescriptionStyles: React.CSSProperties = {
     fontSize: '1.1rem',
     lineHeight: 1.8,
-  
-    color: '#c7ccd4ff',
+    color: 'var(--hero-description-color, #94a3b8)',
     marginBottom: '40px',
     maxWidth: '600px',
   };
@@ -87,8 +86,8 @@ const Hero: React.FC = () => {
     gap: '30px',
     marginBottom: '40px',
     padding: '25px 0',
-    borderTop: '1px solid rgba(148, 163, 184, 0.1)',
-    borderBottom: '1px solid rgba(148, 163, 184, 0.1)',
+    borderTop: 'var(--stats-border-top, 1px solid rgba(148, 163, 184, 0.1))',
+    borderBottom: 'var(--stats-border-bottom, 1px solid rgba(148, 163, 184, 0.1))',
   };
 
   const statItemStyles: React.CSSProperties = {
@@ -100,13 +99,13 @@ const Hero: React.FC = () => {
   const statNumberStyles: React.CSSProperties = {
     fontSize: '2rem',
     fontWeight: 700,
-    color: '#60a5fa',
+    color: 'var(--hero-stat-color, #60a5fa)',
     marginBottom: '5px',
   };
 
   const statLabelStyles: React.CSSProperties = {
     fontSize: '0.9rem',
-    color: '#94a3b8',
+    color: 'var(--hero-stat-label-color, #94a3b8)',
     fontWeight: 500,
   };
 
@@ -135,23 +134,23 @@ const Hero: React.FC = () => {
 
   const btnPrimaryStyles: React.CSSProperties = {
     ...baseButtonStyles,
-    background: 'linear-gradient(90deg, #3b82f6, #6366f1)',
+    background: 'var(--primary-btn-gradient, linear-gradient(90deg, #3b82f6, #6366f1))',
     color: 'white',
-    boxShadow: '0 4px 20px rgba(59, 130, 246, 0.4)',
+    boxShadow: '0 4px 20px rgba(var(--color-accent-rgb, 59, 130, 246), 0.4)',
   };
 
   const btnSecondaryStyles: React.CSSProperties = {
     ...baseButtonStyles,
-    background: 'rgba(99, 102, 241, 0.1)',
-    color: '#818cf8',
-    border: '1px solid rgba(99, 102, 241, 0.2)',
+    background: 'var(--secondary-btn-bg, rgba(99, 102, 241, 0.1))',
+    color: 'var(--secondary-btn-color, #818cf8)',
+    border: 'var(--secondary-btn-border, 1px solid rgba(99, 102, 241, 0.2))',
   };
 
   const btnOutlineStyles: React.CSSProperties = {
     ...baseButtonStyles,
     background: 'transparent',
-    color: '#cbd5e1',
-    border: '1px solid rgba(203, 213, 225, 0.3)',
+    color: 'var(--outline-btn-color, #cbd5e1)',
+    border: 'var(--outline-btn-border, 1px solid rgba(203, 213, 225, 0.3))',
   };
 
   // Social styles
@@ -165,12 +164,12 @@ const Hero: React.FC = () => {
     width: '48px',
     height: '48px',
     borderRadius: '50%',
-    background: 'rgba(30, 41, 59, 0.8)',
-    border: '1px solid rgba(148, 163, 184, 0.2)',
+    background: 'var(--social-bg, rgba(30, 41, 59, 0.8))',
+    border: 'var(--social-border, 1px solid rgba(148, 163, 184, 0.2))',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#cbd5e1',
+    color: 'var(--social-color, #cbd5e1)',
     fontSize: '1.2rem',
     textDecoration: 'none',
     transition: 'all 0.3s ease',
@@ -195,20 +194,23 @@ const Hero: React.FC = () => {
     position: 'relative',
     zIndex: 2,
     boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)',
-    border: '4px solid rgba(59, 130, 246, 0.3)',
+    border: '4px solid rgba(var(--color-accent-rgb, 59, 130, 246), 0.3)',
   };
 
   const imageDecorationStyles: React.CSSProperties = {
-    // position: 'absolute',
     top: '20px',
     right: '-20px',
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
+    background: 'linear-gradient(45deg, var(--color-accent, #3b82f6), #8b5cf6)',
     borderRadius: '20px',
     opacity: 0.2,
     zIndex: 1,
   };
+
+  // CV Download Links
+  const cvGoogleDriveLink = 'https://drive.google.com/file/d/1TULXbQw0UPWSDkzYJJDwtj7olDv0Rvd5/view?usp=drive_link';
+  const cvDirectDownloadLink = 'https://drive.google.com/uc?export=download&id=1TULXbQw0UPWSDkzYJJDwtj7olDv0Rvd5';
 
   // Floating elements
   const floatingElements = [
@@ -229,24 +231,43 @@ const Hero: React.FC = () => {
   const hoverEffects = {
     btnPrimary: {
       transform: 'translateY(-3px)',
-      boxShadow: '0 8px 30px rgba(59, 130, 246, 0.6)',
+      boxShadow: '0 8px 30px rgba(var(--color-accent-rgb, 59, 130, 246), 0.6)',
     },
     btnSecondary: {
-      background: 'rgba(99, 102, 241, 0.2)',
+      background: 'var(--secondary-btn-bg, rgba(99, 102, 241, 0.2))',
       transform: 'translateY(-3px)',
-      borderColor: 'rgba(99, 102, 241, 0.4)',
+      borderColor: 'rgba(var(--color-accent-rgb, 99, 102, 241), 0.4)',
     },
     btnOutline: {
-      background: 'rgba(203, 213, 225, 0.1)',
+      background: 'rgba(var(--color-border-rgb, 203, 213, 225), 0.1)',
       transform: 'translateY(-3px)',
-      borderColor: 'rgba(203, 213, 225, 0.5)',
+      borderColor: 'rgba(var(--color-border-rgb, 203, 213, 225), 0.5)',
     },
     socialLink: {
-      background: 'rgba(59, 130, 246, 0.2)',
-      color: '#60a5fa',
+      background: 'var(--social-hover-bg, rgba(59, 130, 246, 0.2))',
+      color: 'var(--social-hover-color, #60a5fa)',
       transform: 'translateY(-3px)',
-      borderColor: 'rgba(96, 165, 250, 0.4)',
+      borderColor: 'var(--social-hover-border, rgba(96, 165, 250, 0.4))',
     },
+  };
+
+  const handleDownloadCV = () => {
+    // Create a hidden link for download
+    const link = document.createElement('a');
+    link.href = cvDirectDownloadLink;
+    link.download = 'Peter_Muturi_Muigai_CV.pdf';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Fallback: If download doesn't start, open the view link
+    setTimeout(() => {
+      window.open(cvGoogleDriveLink, '_blank', 'noopener,noreferrer');
+    }, 1000);
   };
 
   return (
@@ -269,7 +290,7 @@ const Hero: React.FC = () => {
             right: element.right,
             bottom: element.bottom,
             fontSize: '2rem',
-            color: 'rgba(59, 130, 246, 0.1)',
+            color: 'rgba(var(--color-accent-rgb, 59, 130, 246), 0.1)',
             animation: `float 6s ease-in-out ${element.delay} infinite`,
           }}>
             {element.icon}
@@ -329,18 +350,18 @@ const Hero: React.FC = () => {
             >
               View Projects
             </Link>
-            <a 
-              href="/resume.pdf" 
+            <button 
+              onClick={handleDownloadCV}
               style={{
                 ...btnOutlineStyles,
                 ...(hoverState.downloadCV && hoverEffects.btnOutline)
               }}
               onMouseEnter={() => setHoverState(prev => ({...prev, downloadCV: true}))}
               onMouseLeave={() => setHoverState(prev => ({...prev, downloadCV: false}))}
-              download
+              title="Download CV as PDF"
             >
               <FaDownload /> Download CV
-            </a>
+            </button>
           </div>
           
           <div style={heroSocialStyles}>
@@ -459,7 +480,7 @@ const Hero: React.FC = () => {
             align-items: center;
           }
           
-          .hero-buttons a, .hero-buttons .link-button {
+          .hero-buttons a, .hero-buttons .link-button, .hero-buttons button {
             width: 100%;
             max-width: 300px;
           }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaBriefcase, FaGraduationCap, FaCertificate, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 
 const Resume: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'experience' | 'education' | 'certifications'>('experience');
+  const [activeTab, setActiveTab] = useState<'education' | 'certifications' | 'experience'>('education');
 
   const experiences = [
     {
@@ -78,8 +78,7 @@ const Resume: React.FC = () => {
       institution: 'University of Embu',
       period: 'September 2021 - September 2025',
       description: [
-        
-        'Key coursework:Programming Fundamentals, Object-Oriented Programming, Database Management Systems (DBMS), Computer Networks, Web Development, System Analysis & Design, Software Engineering, IT Project Management, Mobile Application Development, AI & ML'
+        'Key coursework: Programming Fundamentals, Object-Oriented Programming, Database Management Systems (DBMS), Computer Networks, Web Development, System Analysis & Design, Software Engineering, IT Project Management, Mobile Application Development, AI & ML'
       ],
       type: 'education'
     },
@@ -89,7 +88,9 @@ const Resume: React.FC = () => {
       institution: 'Geta Secondary School',
       period: 'January 2016 – April 2021',
       description: [
-        
+        'Completed secondary education with focus on sciences and mathematics',
+        'Participated in computer studies and technical drawing programs',
+        'Developed foundational skills in problem-solving and analytical thinking'
       ],
       type: 'education'
     }
@@ -126,519 +127,53 @@ const Resume: React.FC = () => {
     }
   ];
 
-  // Main container styles
-  const sectionStyles: React.CSSProperties = {
-    padding: '80px 0',
-    background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-    position: 'relative',
-  };
-
-  const containerStyles: React.CSSProperties = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px',
-  };
-
-  // Header styles
-  const sectionHeaderStyles: React.CSSProperties = {
-    textAlign: 'center',
-    marginBottom: '60px',
-  };
-
-  const sectionTitleStyles: React.CSSProperties = {
-    fontSize: '2.5rem',
-    fontWeight: 700,
-    color: '#1e293b',
-    marginBottom: '12px',
-    position: 'relative',
-    display: 'inline-block',
-  };
-
-  const sectionDividerStyles: React.CSSProperties = {
-    width: '80px',
-    height: '4px',
-    background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
-    margin: '0 auto 16px',
-    borderRadius: '2px',
-  };
-
-  const sectionSubtitleStyles: React.CSSProperties = {
-    fontSize: '1.1rem',
-    color: '#64748b',
-    fontWeight: 500,
-  };
-
-  // Tab styles
-  const resumeTabsStyles: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '4px',
-    marginBottom: '50px',
-    background: '#ffffff',
-    padding: '8px',
-    borderRadius: '50px',
-    border: '1px solid #e2e8f0',
-    maxWidth: '400px',
-    margin: '0 auto 50px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-  };
-
-  const baseTabButtonStyles: React.CSSProperties = {
-    padding: '12px 32px',
-    borderRadius: '50px',
-    border: 'none',
-    background: 'transparent',
-    fontSize: '1rem',
-    fontWeight: 600,
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-  };
-
-  const activeTabButtonStyles: React.CSSProperties = {
-    background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
-    color: 'white',
-    boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)',
-  };
-
-  // Timeline styles
-  const timelineContainerStyles: React.CSSProperties = {
-    position: 'relative',
-    marginBottom: '60px',
-  };
-
-  const timelineStyles: React.CSSProperties = {
-    position: 'relative',
-    paddingLeft: '30px',
-    maxWidth: '800px',
-    margin: '0 auto',
-  };
-
-  const timelineLineStyles: React.CSSProperties = {
-    position: 'absolute',
-    left: '20px',
-    top: '0',
-    bottom: '0',
-    width: '2px',
-    background: 'linear-gradient(to bottom, #3b82f6, #8b5cf6)',
-  };
-
-  const timelineItemStyles: React.CSSProperties = {
-    position: 'relative',
-    marginBottom: '40px',
-  };
-
-  const timelineMarkerStyles: React.CSSProperties = {
-    position: 'absolute',
-    left: '-40px',
-    top: '0',
-    width: '40px',
-    height: '40px',
-    borderRadius: '50%',
-    background: 'white',
-    border: '3px solid #3b82f6',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#3b82f6',
-    fontSize: '1rem',
-    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2)',
-    zIndex: 2,
-  };
-
-  const currentBadgeStyles: React.CSSProperties = {
-    position: 'absolute',
-    top: '-8px',
-    right: '-25px',
-    background: 'linear-gradient(90deg, #10b981, #34d399)',
-    color: 'white',
-    fontSize: '0.7rem',
-    padding: '2px 8px',
-    borderRadius: '12px',
-    fontWeight: 600,
-  };
-
-  const timelineContentStyles: React.CSSProperties = {
-    background: 'white',
-    borderRadius: '12px',
-    padding: '32px',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-    border: '1px solid #e2e8f0',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  };
-
-  const timelineHeaderStyles: React.CSSProperties = {
-    marginBottom: '20px',
-  };
-
-  const timelineTitleStyles: React.CSSProperties = {
-    fontSize: '1.4rem',
-    fontWeight: 600,
-    color: '#1e293b',
-    marginBottom: '8px',
-  };
-
-  const timelineMetaStyles: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '12px',
-    flexWrap: 'wrap',
-    gap: '10px',
-  };
-
-  const companyStyles: React.CSSProperties = {
-    fontSize: '1.1rem',
-    fontWeight: 500,
-    color: '#3b82f6',
-  };
-
-  const periodStyles: React.CSSProperties = {
-    fontSize: '0.95rem',
-    color: '#64748b',
-    fontWeight: 500,
-    display: 'flex',
-    alignItems: 'center',
-    gap: '5px',
-  };
-
-  const locationStyles: React.CSSProperties = {
-    fontSize: '0.95rem',
-    color: '#64748b',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '5px',
-  };
-
-  const timelineDescriptionStyles: React.CSSProperties = {
-    paddingLeft: '20px',
-  };
-
-  const timelineListItemStyles: React.CSSProperties = {
-    marginBottom: '10px',
-    color: '#475569',
-    lineHeight: 1.6,
-    position: 'relative',
-  };
-
-  // Education styles
-  const subsectionTitleStyles: React.CSSProperties = {
-    fontSize: '1.8rem',
-    fontWeight: 600,
-    color: '#1e293b',
-    marginBottom: '30px',
-    display: 'flex',
-    alignItems: 'center',
-  };
-
-  const educationSectionStyles: React.CSSProperties = {
-    marginBottom: '60px',
-  };
-
-  const educationGridStyles: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-    gap: '30px',
-  };
-
-  const educationCardStyles: React.CSSProperties = {
-    background: 'white',
-    borderRadius: '12px',
-    padding: '32px',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-    border: '1px solid #e2e8f0',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  };
-
-  const educationHeaderStyles: React.CSSProperties = {
-    marginBottom: '20px',
-  };
-
-  const educationDegreeStyles: React.CSSProperties = {
-    fontSize: '1.3rem',
-    fontWeight: 600,
-    color: '#1e293b',
-    marginBottom: '8px',
-  };
-
-  const educationInstitutionStyles: React.CSSProperties = {
-    fontSize: '1.1rem',
-    color: '#3b82f6',
-    fontWeight: 500,
-    marginBottom: '8px',
-  };
-
-  const educationPeriodStyles: React.CSSProperties = {
-    fontSize: '0.95rem',
-    color: '#64748b',
-    fontWeight: 500,
-  };
-
-  const educationDescriptionStyles: React.CSSProperties = {
-    paddingLeft: '20px',
-    color: '#475569',
-    lineHeight: 1.6,
-  };
-
-  // Certifications styles
-  const certificationsSectionStyles: React.CSSProperties = {
-    marginBottom: '60px',
-  };
-
-  const certificationsGridStyles: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '20px',
-  };
-
-  const certificationCardStyles: React.CSSProperties = {
-    background: 'white',
-    borderRadius: '12px',
-    padding: '24px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '20px',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-    border: '1px solid #e2e8f0',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-  };
-
-  const certificationIconStyles: React.CSSProperties = {
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    fontSize: '1.2rem',
-    flexShrink: 0,
-  };
-
-  const certificationContentStyles: React.CSSProperties = {
-    flex: 1,
-  };
-
-  const certificationNameStyles: React.CSSProperties = {
-    fontSize: '1.1rem',
-    fontWeight: 600,
-    color: '#1e293b',
-    marginBottom: '4px',
-  };
-
-  const certificationIssuerStyles: React.CSSProperties = {
-    fontSize: '0.95rem',
-    color: '#64748b',
-    marginBottom: '4px',
-  };
-
-  const certificationYearStyles: React.CSSProperties = {
-    fontSize: '0.9rem',
-    color: '#3b82f6',
-    fontWeight: 600,
-  };
-
-  // Leadership styles
-  const leadershipSectionStyles: React.CSSProperties = {
-    marginTop: '60px',
-  };
-
-  const leadershipContentStyles: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '40px',
-    marginTop: '30px',
-  };
-
-  const leadershipItemStyles: React.CSSProperties = {
-    background: 'white',
-    borderRadius: '12px',
-    padding: '30px',
-    boxShadow: '0 5px 20px rgba(0, 0, 0, 0.05)',
-    border: '1px solid #e2e8f0',
-  };
-
-  const leadershipItemTitleStyles: React.CSSProperties = {
-    fontSize: '1.2rem',
-    fontWeight: 600,
-    color: '#1e293b',
-    marginBottom: '20px',
-    paddingBottom: '10px',
-    borderBottom: '2px solid #f1f5f9',
-  };
-
-  const leadershipListStyles: React.CSSProperties = {
-    paddingLeft: '20px',
-    color: '#475569',
-    lineHeight: 1.6,
-  };
-
-  const leadershipListItemStyles: React.CSSProperties = {
-    marginBottom: '10px',
-  };
-
-  // Hover effects
-  const [hoverState, setHoverState] = useState({
-    experience: false,
-    education: false,
-    certifications: false,
-    timelineItems: Array(experiences.length).fill(false),
-    educationCards: Array(education.length).fill(false),
-    certificationCards: Array(certifications.length).fill(false),
-  });
-
-  const hoverEffects = {
-    timelineContent: {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-    },
-    educationCard: {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-    },
-    certificationCard: {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-    },
-    tabButton: {
-      background: 'rgba(59, 130, 246, 0.1)',
-      color: '#3b82f6',
-    },
-  };
-
   return (
-    <section style={sectionStyles}>
-      <div style={containerStyles}>
-        <div style={sectionHeaderStyles}>
-          <h2 style={sectionTitleStyles}>My Resume</h2>
-          <div style={sectionDividerStyles}></div>
-          <p style={sectionSubtitleStyles}>Professional Journey & Education</p>
+    <section className="resume-section">
+      <div className="resume-container">
+        <div className="section-header">
+          <h2 className="section-title">My Resume</h2>
+          <div className="section-divider"></div>
+          <p className="section-subtitle">Professional Journey & Education</p>
         </div>
 
-        <div style={resumeTabsStyles}>
+        <div className="resume-tabs">
           <button
-            style={{
-              ...baseTabButtonStyles,
-              ...(activeTab === 'experience' && activeTabButtonStyles),
-              ...(activeTab !== 'experience' && hoverState.experience && hoverEffects.tabButton),
-            }}
-            onClick={() => setActiveTab('experience')}
-            onMouseEnter={() => setHoverState(prev => ({ ...prev, experience: true }))}
-            onMouseLeave={() => setHoverState(prev => ({ ...prev, experience: false }))}
-          >
-            <FaBriefcase /> Experience
-          </button>
-          <button
-            style={{
-              ...baseTabButtonStyles,
-              ...(activeTab === 'education' && activeTabButtonStyles),
-              ...(activeTab !== 'education' && hoverState.education && hoverEffects.tabButton),
-            }}
+            className={`tab-button ${activeTab === 'education' ? 'active' : ''}`}
             onClick={() => setActiveTab('education')}
-            onMouseEnter={() => setHoverState(prev => ({ ...prev, education: true }))}
-            onMouseLeave={() => setHoverState(prev => ({ ...prev, education: false }))}
           >
             <FaGraduationCap /> Education
           </button>
           <button
-            style={{
-              ...baseTabButtonStyles,
-              ...(activeTab === 'certifications' && activeTabButtonStyles),
-              ...(activeTab !== 'certifications' && hoverState.certifications && hoverEffects.tabButton),
-            }}
+            className={`tab-button ${activeTab === 'certifications' ? 'active' : ''}`}
             onClick={() => setActiveTab('certifications')}
-            onMouseEnter={() => setHoverState(prev => ({ ...prev, certifications: true }))}
-            onMouseLeave={() => setHoverState(prev => ({ ...prev, certifications: false }))}
           >
             <FaCertificate /> Certifications
           </button>
+          <button
+            className={`tab-button ${activeTab === 'experience' ? 'active' : ''}`}
+            onClick={() => setActiveTab('experience')}
+          >
+            <FaBriefcase /> Experience
+          </button>
         </div>
 
-        {activeTab === 'experience' && (
-          <div style={timelineContainerStyles}>
-            <div style={timelineLineStyles} />
-            <div style={timelineStyles}>
-              {experiences.map((exp, index) => (
-                <div key={exp.id} style={timelineItemStyles}>
-                  <div style={timelineMarkerStyles}>
-                    <FaBriefcase />
-                    {exp.current && <span style={currentBadgeStyles}>Current</span>}
-                  </div>
-                  <div
-                    style={{
-                      ...timelineContentStyles,
-                      ...(hoverState.timelineItems[index] && hoverEffects.timelineContent),
-                    }}
-                    onMouseEnter={() => setHoverState(prev => ({
-                      ...prev,
-                      timelineItems: prev.timelineItems.map((val, i) => i === index ? true : val)
-                    }))}
-                    onMouseLeave={() => setHoverState(prev => ({
-                      ...prev,
-                      timelineItems: prev.timelineItems.map((val, i) => i === index ? false : val)
-                    }))}
-                  >
-                    <div style={timelineHeaderStyles}>
-                      <h3 style={timelineTitleStyles}>{exp.title}</h3>
-                      <div style={timelineMetaStyles}>
-                        <span style={companyStyles}>{exp.company}</span>
-                        <span style={periodStyles}>
-                          <FaCalendarAlt style={{ fontSize: '0.8rem' }} />
-                          {exp.period}
-                        </span>
-                      </div>
-                      <div style={locationStyles}>
-                        <FaMapMarkerAlt style={{ fontSize: '0.8rem' }} />
-                        {exp.location}
-                      </div>
-                    </div>
-                    <ul style={timelineDescriptionStyles}>
-                      {exp.description.map((item, idx) => (
-                        <li key={idx} style={timelineListItemStyles}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {activeTab === 'education' && (
-          <div style={educationSectionStyles}>
-            <h3 style={subsectionTitleStyles}>
-              <span style={{ marginRight: '10px' }}><FaGraduationCap /></span>
+          <div className="education-section">
+            <h3 className="subsection-title">
+              <span className="subsection-icon"><FaGraduationCap /></span>
               Education Background
             </h3>
-            <div style={educationGridStyles}>
+            <div className="education-grid">
               {education.map((edu, index) => (
-                <div
-                  key={edu.id}
-                  style={{
-                    ...educationCardStyles,
-                    ...(hoverState.educationCards[index] && hoverEffects.educationCard),
-                  }}
-                  onMouseEnter={() => setHoverState(prev => ({
-                    ...prev,
-                    educationCards: prev.educationCards.map((val, i) => i === index ? true : val)
-                  }))}
-                  onMouseLeave={() => setHoverState(prev => ({
-                    ...prev,
-                    educationCards: prev.educationCards.map((val, i) => i === index ? false : val)
-                  }))}
-                >
-                  <div style={educationHeaderStyles}>
-                    <h4 style={educationDegreeStyles}>{edu.degree}</h4>
-                    <div style={educationInstitutionStyles}>{edu.institution}</div>
-                    <div style={educationPeriodStyles}>{edu.period}</div>
+                <div key={edu.id} className="education-card">
+                  <div className="education-header">
+                    <h4 className="education-degree">{edu.degree}</h4>
+                    <div className="education-institution">{edu.institution}</div>
+                    <div className="education-period">{edu.period}</div>
                   </div>
-                  <ul style={educationDescriptionStyles}>
+                  <ul className="education-description">
                     {edu.description.map((item, idx) => (
-                      <li key={idx} style={timelineListItemStyles}>{item}</li>
+                      <li key={idx} className="education-list-item">{item}</li>
                     ))}
                   </ul>
                 </div>
@@ -648,35 +183,21 @@ const Resume: React.FC = () => {
         )}
 
         {activeTab === 'certifications' && (
-          <div style={certificationsSectionStyles}>
-            <h3 style={subsectionTitleStyles}>
-              <span style={{ marginRight: '10px' }}><FaCertificate /></span>
+          <div className="certifications-section">
+            <h3 className="subsection-title">
+              <span className="subsection-icon"><FaCertificate /></span>
               Certifications & Training
             </h3>
-            <div style={certificationsGridStyles}>
+            <div className="certifications-grid">
               {certifications.map((cert, index) => (
-                <div
-                  key={cert.id}
-                  style={{
-                    ...certificationCardStyles,
-                    ...(hoverState.certificationCards[index] && hoverEffects.certificationCard),
-                  }}
-                  onMouseEnter={() => setHoverState(prev => ({
-                    ...prev,
-                    certificationCards: prev.certificationCards.map((val, i) => i === index ? true : val)
-                  }))}
-                  onMouseLeave={() => setHoverState(prev => ({
-                    ...prev,
-                    certificationCards: prev.certificationCards.map((val, i) => i === index ? false : val)
-                  }))}
-                >
-                  <div style={certificationIconStyles}>
+                <div key={cert.id} className="certification-card">
+                  <div className="certification-icon">
                     <FaCertificate />
                   </div>
-                  <div style={certificationContentStyles}>
-                    <h4 style={certificationNameStyles}>{cert.name}</h4>
-                    <div style={certificationIssuerStyles}>{cert.issuer}</div>
-                    <div style={certificationYearStyles}>{cert.year}</div>
+                  <div className="certification-content">
+                    <h4 className="certification-name">{cert.name}</h4>
+                    <div className="certification-issuer">{cert.issuer}</div>
+                    <div className="certification-year">{cert.year}</div>
                   </div>
                 </div>
               ))}
@@ -684,30 +205,601 @@ const Resume: React.FC = () => {
           </div>
         )}
 
-        <div style={leadershipSectionStyles}>
-          <h3 style={subsectionTitleStyles}>Leadership & Community Engagement</h3>
-          <div style={leadershipContentStyles}>
-            <div style={leadershipItemStyles}>
-              <h4 style={leadershipItemTitleStyles}>Leadership Roles</h4>
-              <ul style={leadershipListStyles}>
-                <li style={leadershipListItemStyles}>Male Representative – University of Embu Student Association (2024–2025)</li>
-                <li style={leadershipListItemStyles}>CIT Departmental Representative – University of Embu Student Association (2023–2024)</li>
-                <li style={leadershipListItemStyles}>Founder & Coordinator – Code and Tech Club, University of Embu</li>
-                <li style={leadershipListItemStyles}>Treasurer – University of Embu Christian Union IT Ministry (2023–2024)</li>
+        {activeTab === 'experience' && (
+          <div className="timeline-container">
+            <div className="timeline-line"></div>
+            <div className="timeline">
+              {experiences.map((exp, index) => (
+                <div key={exp.id} className="timeline-item">
+                  <div className="timeline-marker">
+                    <FaBriefcase />
+                    {exp.current && <span className="current-badge">Current</span>}
+                  </div>
+                  <div className="timeline-content">
+                    <div className="timeline-header">
+                      <h3 className="timeline-title">{exp.title}</h3>
+                      <div className="timeline-meta">
+                        <span className="company">{exp.company}</span>
+                        <span className="period">
+                          <FaCalendarAlt />
+                          {exp.period}
+                        </span>
+                      </div>
+                      <div className="location">
+                        <FaMapMarkerAlt />
+                        {exp.location}
+                      </div>
+                    </div>
+                    <ul className="timeline-description">
+                      {exp.description.map((item, idx) => (
+                        <li key={idx} className="timeline-list-item">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="leadership-section">
+          <h3 className="subsection-title">Leadership & Community Engagement</h3>
+          <div className="leadership-content">
+            <div className="leadership-item">
+              <h4 className="leadership-item-title">Leadership Roles</h4>
+              <ul className="leadership-list">
+                <li className="leadership-list-item">Male Representative – University of Embu Student Association (2024–2025)</li>
+                <li className="leadership-list-item">CIT Departmental Representative – University of Embu Student Association (2023–2024)</li>
+                <li className="leadership-list-item">Founder & Coordinator – Code and Tech Club, University of Embu</li>
+                <li className="leadership-list-item">Treasurer – University of Embu Christian Union IT Ministry (2023–2024)</li>
               </ul>
             </div>
-            <div style={leadershipItemStyles}>
-              <h4 style={leadershipItemTitleStyles}>Voluntary & Community Engagement</h4>
-              <ul style={leadershipListStyles}>
-                <li style={leadershipListItemStyles}>Trained peers in multimedia skills (projection, posters, photography)</li>
-                <li style={leadershipListItemStyles}>Participated in Kangaru market cleanup activity organized by University of Embu student association</li>
-                <li style={leadershipListItemStyles}>Participated in Tree planting activity organized by University of Embu on 10th November 2023</li>
-                <li style={leadershipListItemStyles}>Participated in Embu town clean up activity organized by University of Embu on 8th October 2022</li>
+            <div className="leadership-item">
+              <h4 className="leadership-item-title">Voluntary & Community Engagement</h4>
+              <ul className="leadership-list">
+                <li className="leadership-list-item">Trained peers in multimedia skills (projection, posters, photography)</li>
+                <li className="leadership-list-item">Participated in Kangaru market cleanup activity organized by University of Embu student association</li>
+                <li className="leadership-list-item">Participated in Tree planting activity organized by University of Embu on 10th November 2023</li>
+                <li className="leadership-list-item">Participated in Embu town clean up activity organized by University of Embu on 8th October 2022</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+
+      <style >{`
+        .resume-section {
+          padding: 80px 0;
+          background: var(--hero-bg-gradient);
+          position: relative;
+          overflow: hidden;
+          min-height: 100vh;
+          transition: background 0.3s ease;
+        }
+
+        .resume-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .section-header {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--hero-text-color);
+          margin-bottom: 12px;
+          position: relative;
+          display: inline-block;
+          transition: color 0.3s ease;
+        }
+
+        .section-divider {
+          width: 80px;
+          height: 4px;
+          background: var(--hero-badge-gradient);
+          margin: 0 auto 16px;
+          border-radius: 2px;
+          transition: background 0.3s ease;
+        }
+
+        .section-subtitle {
+          font-size: 1.1rem;
+          color: var(--hero-description-color);
+          font-weight: 500;
+          transition: color 0.3s ease;
+        }
+
+        .resume-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 4px;
+          margin-bottom: 50px;
+          background: var(--color-surface);
+          padding: 8px;
+          border-radius: 50px;
+          border: 1px solid var(--color-border);
+          max-width: 400px;
+          margin: 0 auto 50px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-button {
+          padding: 12px 32px;
+          border-radius: 50px;
+          border: none;
+          background: transparent;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: var(--color-text-light);
+        }
+
+        .tab-button:hover {
+          background: rgba(var(--color-accent-rgb), 0.1);
+          color: var(--color-accent);
+        }
+
+        .tab-button.active {
+          background: var(--hero-badge-gradient);
+          color: white;
+          box-shadow: 0 4px 15px rgba(var(--color-accent-rgb), 0.3);
+        }
+
+        .timeline-container {
+          position: relative;
+          margin-bottom: 60px;
+        }
+
+        .timeline-line {
+          position: absolute;
+          left: 20px;
+          top: 0;
+          bottom: 0;
+          width: 2px;
+          background: var(--hero-badge-gradient);
+          transform: translateX(-50%);
+        }
+
+        .timeline {
+          position: relative;
+          padding-left: 30px;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .timeline-item {
+          position: relative;
+          margin-bottom: 40px;
+        }
+
+        .timeline-marker {
+          position: absolute;
+          left: -40px;
+          top: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: var(--color-surface);
+          border: 3px solid var(--color-accent);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-accent);
+          font-size: 1rem;
+          box-shadow: 0 4px 12px rgba(var(--color-accent-rgb), 0.2);
+          z-index: 2;
+          transition: all 0.3s ease;
+        }
+
+        .current-badge {
+          position: absolute;
+          top: -8px;
+          right: -25px;
+          background: linear-gradient(90deg, #10b981, #34d399);
+          color: white;
+          font-size: 0.7rem;
+          padding: 2px 8px;
+          border-radius: 12px;
+          font-weight: 600;
+        }
+
+        .timeline-content {
+          background: var(--color-surface);
+          border-radius: 12px;
+          padding: 32px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+          border: 1px solid var(--color-border);
+          transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-header {
+          margin-bottom: 20px;
+        }
+
+        .timeline-title {
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: var(--color-text);
+          margin-bottom: 8px;
+          transition: color 0.3s ease;
+        }
+
+        .timeline-meta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .company {
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--color-accent);
+          transition: color 0.3s ease;
+        }
+
+        .period {
+          font-size: 0.95rem;
+          color: var(--color-text-light);
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          transition: color 0.3s ease;
+        }
+
+        .location {
+          font-size: 0.95rem;
+          color: var(--color-text-light);
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          transition: color 0.3s ease;
+        }
+
+        .timeline-description {
+          padding-left: 20px;
+        }
+
+        .timeline-list-item {
+          margin-bottom: 10px;
+          color: var(--color-secondary);
+          line-height: 1.6;
+          position: relative;
+          transition: color 0.3s ease;
+        }
+
+        .timeline-list-item::before {
+          content: '•';
+          color: var(--color-accent);
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+
+        .subsection-title {
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: var(--color-text);
+          margin-bottom: 30px;
+          display: flex;
+          align-items: center;
+          transition: color 0.3s ease;
+        }
+
+        .subsection-icon {
+          margin-right: 10px;
+        }
+
+        .education-section {
+          margin-bottom: 60px;
+        }
+
+        .education-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 30px;
+        }
+
+        .education-card {
+          background: var(--color-surface);
+          border-radius: 12px;
+          padding: 32px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+          border: 1px solid var(--color-border);
+          transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-header {
+          margin-bottom: 20px;
+        }
+
+        .education-degree {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: var(--color-text);
+          margin-bottom: 8px;
+          transition: color 0.3s ease;
+        }
+
+        .education-institution {
+          font-size: 1.1rem;
+          color: var(--color-accent);
+          font-weight: 500;
+          margin-bottom: 8px;
+          transition: color 0.3s ease;
+        }
+
+        .education-period {
+          font-size: 0.95rem;
+          color: var(--color-text-light);
+          font-weight: 500;
+          transition: color 0.3s ease;
+        }
+
+        .education-description {
+          padding-left: 20px;
+          color: var(--color-secondary);
+          line-height: 1.6;
+        }
+
+        .education-list-item {
+          margin-bottom: 10px;
+          color: var(--color-secondary);
+          line-height: 1.6;
+          transition: color 0.3s ease;
+        }
+
+        .education-list-item::before {
+          content: '•';
+          color: var(--color-accent);
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+
+        .certifications-section {
+          margin-bottom: 60px;
+        }
+
+        .certifications-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+        }
+
+        .certification-card {
+          background: var(--color-surface);
+          border-radius: 12px;
+          padding: 24px;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+          border: 1px solid var(--color-border);
+          transition: all 0.3s ease;
+        }
+
+        .certification-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .certification-icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: var(--hero-badge-gradient);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.2rem;
+          flex-shrink: 0;
+        }
+
+        .certification-content {
+          flex: 1;
+        }
+
+        .certification-name {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--color-text);
+          margin-bottom: 4px;
+          transition: color 0.3s ease;
+        }
+
+        .certification-issuer {
+          font-size: 0.95rem;
+          color: var(--color-text-light);
+          margin-bottom: 4px;
+          transition: color 0.3s ease;
+        }
+
+        .certification-year {
+          font-size: 0.9rem;
+          color: var(--color-accent);
+          font-weight: 600;
+          transition: color 0.3s ease;
+        }
+
+        .leadership-section {
+          margin-top: 60px;
+        }
+
+        .leadership-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 40px;
+          margin-top: 30px;
+        }
+
+        .leadership-item {
+          background: var(--color-surface);
+          border-radius: 12px;
+          padding: 30px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+          border: 1px solid var(--color-border);
+          transition: all 0.3s ease;
+        }
+
+        .leadership-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .leadership-item-title {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: var(--color-text);
+          margin-bottom: 20px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid rgba(var(--color-border-rgb), 0.3);
+          transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .leadership-list {
+          padding-left: 20px;
+          color: var(--color-secondary);
+          line-height: 1.6;
+        }
+
+        .leadership-list-item {
+          margin-bottom: 10px;
+          transition: color 0.3s ease;
+        }
+
+        .leadership-list-item::before {
+          content: '•';
+          color: var(--color-accent);
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-left: -1em;
+        }
+
+        @media (max-width: 768px) {
+          .resume-section {
+            padding: 60px 0;
+          }
+
+          .section-title {
+            font-size: 2rem;
+          }
+
+          .resume-tabs {
+            flex-direction: column;
+            max-width: 300px;
+            border-radius: 12px;
+          }
+
+          .tab-button {
+            padding: 12px 20px;
+          }
+
+          .timeline-line {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          .timeline-marker {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          .timeline-content {
+            margin-top: 40px;
+            margin-left: 0;
+            padding: 20px;
+          }
+
+          .education-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .certifications-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          }
+
+          .leadership-content {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+
+          .timeline-meta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+
+          .period, .location {
+            font-size: 0.9rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .section-title {
+            font-size: 1.8rem;
+          }
+
+          .subsection-title {
+            font-size: 1.5rem;
+          }
+
+          .certifications-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .certification-card {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+          }
+
+          .certification-icon {
+            margin: 0 auto;
+          }
+
+          .timeline-content {
+            padding: 16px;
+          }
+
+          .timeline-title {
+            font-size: 1.2rem;
+          }
+
+          .company {
+            font-size: 1rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };

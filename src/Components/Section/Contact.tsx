@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaLinkedin, FaGithub} from 'react-icons/fa';
+import React, { useState, useRef } from 'react';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaLinkedin, FaGithub, FaExclamationTriangle } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',    // Changed from 'name'
+    reply_to: '',     // Changed from 'email'
     subject: '',
     message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const contactInfo = {
     email: 'muigaipeter61@gmail.com',
@@ -22,10 +25,8 @@ const Contact: React.FC = () => {
   };
 
   const socialLinks = [
-    { icon: <FaLinkedin />, label: 'LinkedIn', url: 'www.linkedin.com/in/peter-muturi-303089306' },
+    { icon: <FaLinkedin />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/peter-muturi-303089306' },
     { icon: <FaGithub />, label: 'GitHub', url: 'https://github.com/honPj' },
-    // { icon: <FaTwitter />, label: 'Twitter', url: '#' },
-    // { icon: <FaInstagram />, label: 'Instagram', url: '#' },
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,19 +36,45 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError('');
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      if (form.current) {
+        // Send email using EmailJS with your credentials
+        const result = await emailjs.sendForm(
+          'service_y3a62rg',
+          'template_wezqqoh',
+          form.current,
+          'ExzmFqrSqTxWvr1LN'
+        );
+        
+        console.log('Email sent successfully!', result.text);
+        
+        // Reset form and show success message
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormData({ 
+          from_name: '', 
+          reply_to: '', 
+          subject: '', 
+          message: '' 
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setIsSubmitting(false);
+      setSubmitError('Failed to send message. Please try again later.');
+      
+      // Clear error after 5 seconds
+      setTimeout(() => setSubmitError(''), 5000);
+    }
   };
 
+  // Main container styles
   const containerStyles = {
     padding: '5rem 0',
     backgroundColor: 'var(--color-surface)',
@@ -171,12 +198,6 @@ const Contact: React.FC = () => {
     color: 'var(--color-text)',
     transition: 'all 0.3s ease',
     border: '1px solid var(--color-border)',
-    ':hover': {
-      transform: 'translateY(-3px)',
-      boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
-      borderColor: 'var(--color-accent)',
-      color: 'var(--color-accent)',
-    },
   };
 
   const formCardStyles = {
@@ -215,11 +236,6 @@ const Contact: React.FC = () => {
     color: 'var(--color-text)',
     fontSize: '1rem',
     transition: 'all 0.3s ease',
-    ':focus': {
-      outline: 'none',
-      borderColor: 'var(--color-accent)',
-      boxShadow: '0 0 0 3px rgba(49, 130, 206, 0.1)',
-    },
   };
 
   const textareaStyles = {
@@ -244,22 +260,26 @@ const Contact: React.FC = () => {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '0.75rem',
-    ':hover': {
-      backgroundColor: 'var(--color-primary)',
-      transform: 'translateY(-3px)',
-      boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-    },
-    ':disabled': {
-      opacity: 0.7,
-      cursor: 'not-allowed',
-      transform: 'none',
-    },
   };
 
   const successMessageStyles = {
     backgroundColor: 'rgba(16, 185, 129, 0.1)',
     border: '1px solid rgba(16, 185, 129, 0.2)',
     color: '#10b981',
+    padding: '1rem',
+    borderRadius: '12px',
+    marginTop: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.75rem',
+    fontSize: '0.9rem',
+    fontWeight: '600',
+  };
+
+  const errorMessageStyles = {
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+    border: '1px solid rgba(239, 68, 68, 0.2)',
+    color: '#ef4444',
     padding: '1rem',
     borderRadius: '12px',
     marginTop: '1rem',
@@ -393,13 +413,13 @@ const Contact: React.FC = () => {
 
           <div style={formCardStyles}>
             <h3 style={formTitleStyles}>Send a Message</h3>
-            <form onSubmit={handleSubmit}>
+            <form ref={form} onSubmit={handleSubmit}>
               <div style={formGroupStyles}>
                 <label style={labelStyles}>Full Name *</label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="from_name"  // This matches the state key
+                  value={formData.from_name}  // This matches the state
                   onChange={handleChange}
                   required
                   placeholder="Enter your full name"
@@ -411,8 +431,8 @@ const Contact: React.FC = () => {
                 <label style={labelStyles}>Email Address *</label>
                 <input
                   type="email"
-                  name="email"
-                  value={formData.email}
+                  name="reply_to"  // This matches the state key
+                  value={formData.reply_to}  // This matches the state
                   onChange={handleChange}
                   required
                   placeholder="Enter your email address"
@@ -463,7 +483,7 @@ const Contact: React.FC = () => {
                   </>
                 ) : (
                   <>
-                    
+                    <FaPaperPlane />
                     Send Message
                   </>
                 )}
@@ -473,6 +493,13 @@ const Contact: React.FC = () => {
                 <div style={successMessageStyles}>
                   <FaCheckCircle />
                   Thank you! Your message has been sent successfully. I'll get back to you soon.
+                </div>
+              )}
+
+              {submitError && (
+                <div style={errorMessageStyles}>
+                  <FaExclamationTriangle />
+                  {submitError}
                 </div>
               )}
             </form>
@@ -517,6 +544,40 @@ const Contact: React.FC = () => {
       <style>{`
         @keyframes spin {
           to { transform: rotate(360deg); }
+        }
+        
+        /* Hover effects for social links */
+        a:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+          border-color: var(--color-accent);
+          color: var(--color-accent);
+        }
+        
+        /* Hover effects for submit button */
+        button:hover:not(:disabled) {
+          background-color: var(--color-primary);
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        button:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+          transform: none;
+        }
+        
+        /* Focus states for inputs */
+        input:focus, textarea:focus {
+          outline: none;
+          border-color: var(--color-accent);
+          box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+          .content {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
     </section>
